@@ -120,7 +120,7 @@ protected:
   bool m_stereoUpmix = false;
 };
 
-class CActiveAEFilter;
+class CActiveAEScaleTempo;
 
 class CActiveAEBufferPoolAtempo : public CActiveAEBufferPool
 {
@@ -140,7 +140,7 @@ public:
 
 protected:
   void ChangeFilter();
-  std::unique_ptr<CActiveAEFilter> m_pTempoFilter;
+  std::unique_ptr<CActiveAEScaleTempo> m_pTempoFilter;
   uint8_t *m_planes[16];
   CSampleBuffer *m_procSample;
   bool m_empty;

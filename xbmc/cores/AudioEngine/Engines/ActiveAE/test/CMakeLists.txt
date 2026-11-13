@@ -1,7 +1,7 @@
 set(SOURCES TestActiveAEBuffer.cpp
             TestActiveAEEngineStats.cpp
-            TestActiveAEFilter.cpp
             TestActiveAEResampleFFMPEG.cpp
+            TestActiveAEScaleTempo.cpp
             TestActiveAEStream.cpp
             TestActiveAESync.cpp)
 

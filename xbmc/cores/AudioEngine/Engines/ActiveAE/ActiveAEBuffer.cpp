@@ -9,7 +9,7 @@
 #include "ActiveAEBuffer.h"
 
 #include "ActiveAE.h"
-#include "ActiveAEFilter.h"
+#include "ActiveAEScaleTempo.h"
 #include "cores/AudioEngine/AEResampleFactory.h"
 #include "cores/AudioEngine/Utils/AEUtil.h"
 
@@ -472,7 +472,7 @@ bool CActiveAEBufferPoolAtempo::Create(unsigned int totaltime)
 {
   CActiveAEBufferPool::Create(totaltime);
 
-  m_pTempoFilter = std::make_unique<CActiveAEFilter>();
+  m_pTempoFilter = std::make_unique<CActiveAEScaleTempo>();
   m_pTempoFilter->Init(CAEUtil::GetAVSampleFormat(m_format.m_dataFormat), m_format.m_sampleRate, CAEUtil::GetAVChannelLayout(m_format.m_channelLayout));
 
   return true;
@@ -692,8 +692,9 @@ float CActiveAEBufferPoolAtempo::GetDelay()
 
 void CActiveAEBufferPoolAtempo::SetTempo(float tempo)
 {
-  if (tempo > 100.0f)
-    tempo = 100.0;
+  // scaletempo2 mutes audio above 8
+  if (tempo > 8.0f)
+    tempo = 8.0;
   else if (tempo < 0.5f)
     tempo = 0.5;
 

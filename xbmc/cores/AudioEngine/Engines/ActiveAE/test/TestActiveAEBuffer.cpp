@@ -31,3 +31,20 @@ TEST(TestActiveAEBuffer, AtempoPoolTakesTempoAboveTwo)
   pool.SetTempo(4.17f);
   EXPECT_FLOAT_EQ(pool.GetTempo(), 4.17f);
 }
+
+TEST(TestActiveAEBuffer, AtempoPoolCapsTempoAtEight)
+{
+  // scaletempo2 mutes audio above 8x
+  AEAudioFormat format;
+  format.m_dataFormat = AE_FMT_FLOAT;
+  format.m_sampleRate = 48000;
+  format.m_channelLayout = AE_CH_LAYOUT_2_0;
+  format.m_frames = 1024;
+  format.m_frameSize = format.m_channelLayout.Count() * sizeof(float);
+
+  CActiveAEBufferPoolAtempo pool(format);
+  ASSERT_TRUE(pool.Create(100));
+
+  pool.SetTempo(16.0f);
+  EXPECT_FLOAT_EQ(pool.GetTempo(), 8.0f);
+}

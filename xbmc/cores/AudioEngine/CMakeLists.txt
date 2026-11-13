@@ -3,7 +3,8 @@ set(SOURCES AEResampleFactory.cpp
             Encoders/AEEncoderFFmpeg.cpp
             Engines/ActiveAE/ActiveAE.cpp
             Engines/ActiveAE/ActiveAEBuffer.cpp
-            Engines/ActiveAE/ActiveAEFilter.cpp
+            Engines/ActiveAE/ActiveAEScaleTempo.cpp
+            Engines/ActiveAE/ActiveAEScaleTempo2Internals.cpp
             Engines/ActiveAE/ActiveAESink.cpp
             Engines/ActiveAE/ActiveAEStream.cpp
             Engines/ActiveAE/ActiveAESound.cpp
@@ -24,7 +25,8 @@ set(HEADERS AEResampleFactory.h
             Engines/ActiveAE/ActiveAE.h
             Engines/ActiveAE/ActiveAEBuffer.h
             Engines/ActiveAE/ActiveAEDeviceChange.h
-            Engines/ActiveAE/ActiveAEFilter.h
+            Engines/ActiveAE/ActiveAEScaleTempo.h
+            Engines/ActiveAE/ActiveAEScaleTempo2Internals.h
             Engines/ActiveAE/ActiveAESink.h
             Engines/ActiveAE/ActiveAESound.h
             Engines/ActiveAE/ActiveAEStream.h
